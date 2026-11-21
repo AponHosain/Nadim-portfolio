@@ -1,0 +1,36 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#home" class="brand">
+        <span class="brand-icon">{{ partial "icon.html" "code" }}</span>
+        <span>{{ site.Params.brandStart }}<em>{{ site.Params.brandEnd }}</em></span>
+      </a>
+      <p>{{ site.Params.footerTagline }}</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-follow">
+      <h4>Follow Me</h4>
+      <div class="socials">
+        {{ range site.Data.socials }}
+        <a href="{{ .url }}" aria-label="{{ .name }}" target="_blank" rel="noopener">{{ partial "icon.html" .icon }}</a>
+        {{ end }}
+      </div>
+    </div>
+
+    <div class="footer-copy">
+      <span>&copy; {{ now.Year }} {{ site.Params.name }}. All rights reserved.</span>
+      <span>Made with <b class="heart">&hearts;</b></span>
+    </div>
+  </div>
+</footer>

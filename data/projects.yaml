@@ -1,0 +1,17 @@
+# image: static/images/ er moddhe screenshot rekhe "images/xxx.jpg" likhle oi image dekhabe.
+# image na dile theme gradient dekhabe (theme-1 / theme-2 / theme-3).
+- title: TECHNOLOGY
+  text: Ek line-e project-er description.
+  url: "https://assignment-5-aponhossain.netlify.app"
+  theme: theme-1
+  image: "images/WEV.dev.png"
+- title: EXPENCE TRAKER
+  text: Travel platform with React and Tailwind CSS.
+  url: "#"
+  theme: theme-2
+  image: "images/EXPECE.jpg"
+- title: STUDENT MANAGEMENT SYSTEM
+  text: Personal finance dashboard with charts & insights.
+  url: "#"
+  theme: theme-3
+  image: "images/Student.jpg"

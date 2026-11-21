@@ -1,0 +1,155 @@
+{{ define "main" }}
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <span class="badge"><span class="wave">👋</span> {{ site.Params.badge }}</span>
+      <h1>{{ site.Params.greeting }} <span class="grad">{{ site.Params.name }}</span></h1>
+     <h2 class="role"><i></i><span>{{ site.Params.role | safeHTML }}</span></h2>
+      <p class="lead">{{ site.Params.intro }}</p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">{{ partial "icon.html" "send" }} View My Work {{ partial "icon.html" "arrow-right" }}</a>
+        <a href="{{ site.Params.resume | relURL }}" class="btn btn-outline" download>Download Resume {{ partial "icon.html" "download" }}</a>
+      </div>
+
+      <div class="socials">
+        {{ range site.Data.socials }}
+        <a href="{{ .url }}" aria-label="{{ .name }}" target="_blank" rel="noopener">{{ partial "icon.html" .icon }}</a>
+        {{ end }}
+      </div>
+    </div>
+
+        <div class="hero-visual">
+      <div class="photo-ring">
+        <img src="images/profile.jpg" alt="{{ site.Params.name }}" class="profile">
+      </div>
+     
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="container about-grid">
+    <div class="about-text">
+      <span class="eyebrow"><i></i>About Me</span>
+      <h2>{{ site.Params.aboutTitle | safeHTML }}</h2>
+      <p>{{ site.Params.aboutText }}</p>
+      <div class="signature">{{ site.Params.signature }}</div>
+    </div>
+
+    <div class="info-grid">
+      {{ $items := slice
+        (dict "icon" "user" "label" "Name" "value" site.Params.name)
+        (dict "icon" "calendar" "label" "Experience" "value" site.Params.experience)
+        (dict "icon" "mail" "label" "Email" "value" site.Params.email)
+        (dict "icon" "map-pin" "label" "Location" "value" site.Params.location)
+        (dict "icon" "globe" "label" "Availability" "value" site.Params.availability)
+        (dict "icon" "send" "label" "Freelance" "value" site.Params.freelance) }}
+      {{ range $items }}
+      <div class="info-card">
+        <span class="info-icon">{{ partial "icon.html" .icon }}</span>
+        <div><small>{{ .label }}</small><b>{{ .value }}</b></div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow-text">What I Do</span>
+      <h2>Services I <span class="grad-text">Offer</span></h2>
+    </div>
+    <div class="cards-4">
+      {{ range site.Data.services }}
+      <article class="service-card">
+        <span class="service-icon">{{ partial "icon.html" .icon }}</span>
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+        <a href="#contact" class="learn">Learn More {{ partial "icon.html" "arrow-right" }}</a>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects">
+  <div class="container">
+    <div class="section-head split">
+      <div>
+        <span class="eyebrow-text">Featured Projects</span>
+        <h2>Selected Work</h2>
+      </div>
+      <a href="#projects" class="view-all">View All Projects {{ partial "icon.html" "arrow-right" }}</a>
+    </div>
+    <div class="cards-3">
+      {{ range site.Data.projects }}
+      <a class="project-card" href="{{ .url }}" target="_blank" rel="noopener">
+        <div class="thumb {{ .theme }}">
+          {{ if .image }}<img src="{{ .image | relURL }}" alt="{{ .title }}" loading="lazy">{{ end }}
+        </div>
+        <div class="project-info">
+          <div>
+            <h3>{{ .title }}</h3>
+            <p>{{ .text }}</p>
+          </div>
+          <span class="open">{{ partial "icon.html" "external-link" }}</span>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS + CONTACT -->
+<section id="contact" class="contact-area">
+  <div class="container contact-grid">
+
+    <div class="testimonials">
+      <span class="eyebrow-text">Testimonials</span>
+      <h2>What Clients Say</h2>
+      <div class="t-slider">
+        {{ range $i, $t := site.Data.testimonials }}
+        <div class="t-card{{ if eq $i 0 }} active{{ end }}">
+          <span class="quote">&ldquo;</span>
+          <p>{{ $t.text }}</p>
+          <div class="t-author">
+            {{ if $t.avatar }}<img src="{{ $t.avatar | relURL }}" alt="{{ $t.name }}">{{ else }}<span class="avatar">{{ substr $t.name 0 1 }}</span>{{ end }}
+            <div><b>{{ $t.name }}</b><small>{{ $t.role }}</small></div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      <div class="dots">
+        {{ range $i, $t := site.Data.testimonials }}<button class="dot{{ if eq $i 0 }} active{{ end }}" aria-label="Testimonial {{ add $i 1 }}"></button>{{ end }}
+      </div>
+    </div>
+
+    <div class="get-in-touch">
+      <span class="eyebrow-text">Let's Work Together</span>
+      <h2>Get In Touch</h2>
+      <p>Have a project in mind? Let's build something amazing together!</p>
+      <ul class="contact-list">
+        <li>{{ partial "icon.html" "mail" }} {{ site.Params.email }}</li>
+        <li>{{ partial "icon.html" "phone" }} {{ site.Params.phone }}</li>
+        <li>{{ partial "icon.html" "map-pin" }} {{ site.Params.location }}</li>
+      </ul>
+    </div>
+
+    <form class="contact-form" action="{{ site.Params.formAction }}" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn btn-primary btn-block">Send Message {{ partial "icon.html" "send" }}</button>
+    </form>
+
+  </div>
+</section>
+
+{{ end }}

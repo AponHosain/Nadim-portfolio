@@ -1,0 +1,20 @@
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="#home" class="brand">
+      <span class="brand-icon">{{ partial "icon.html" "code" }}</span>
+      <span>{{ site.Params.brandStart }}<em>{{ site.Params.brandEnd }}</em></span>
+    </a>
+
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">{{ partial "icon.html" "menu" }}</button>
+
+    <nav class="main-nav" id="main-nav">
+      <ul>
+        {{ range site.Menus.main }}
+        <li><a href="{{ .URL }}" class="nav-link">{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+    </nav>
+
+    <a href="#contact" class="btn btn-outline btn-sm nav-cta">Let's Talk {{ partial "icon.html" "arrow-right" }}</a>
+  </div>
+</header>

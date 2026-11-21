@@ -1,0 +1,15 @@
+- name: GitHub
+  icon: github
+  url: "https://github.com/"
+- name: LinkedIn
+  icon: linkedin
+  url: "https://linkedin.com/"
+- name: Twitter
+  icon: twitter
+  url: "https://twitter.com/"
+- name: YouTube
+  icon: youtube
+  url: "https://youtube.com/"
+- name: Email
+  icon: mail
+  url: "aponhosain25@gmail.com"
