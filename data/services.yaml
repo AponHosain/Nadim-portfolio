@@ -1,12 +1,12 @@
 - title: Frontend Development
   icon: code
-  text: Building responsive websites with modern technologies.
-- title: UI/UX Implementation
-  icon: layout
-  text: Converting ideas into beautiful and user-friendly designs.
+  text: Building responsive websites with HTML, CSS, JavaScript, React and Tailwind CSS.
+- title: Backend Development
+  icon: server
+  text: Building REST APIs and server logic with Node.js, Express.js and MongoDB.
 - title: Performance Optimization
   icon: trending-up
   text: Improve website performance for better user experience.
 - title: Web Application
   icon: smartphone
-  text: Developing scalable web applications for businesses.
+  text: Developing full-stack MERN applications (MongoDB, Express, React, Node.js).
